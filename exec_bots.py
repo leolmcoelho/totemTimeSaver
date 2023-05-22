@@ -138,6 +138,8 @@ def exec_amil(data:IStenci):
 
     medico = get_medico(data.medico)
 
+    
+    
     amil = Amil(senha.user, senha.password)
 
     amil.click_autorization_previa()
@@ -148,6 +150,7 @@ def exec_amil(data:IStenci):
     amil.insert_data()
     # input('esperar')
     amil.inserir_solicitante(medico.name, medico.cbo)
+    
     amil.inserir_servico()
     amil.click_incluir()
 
@@ -223,11 +226,11 @@ def exec_parana_clinicas(data:IStenci):
 
 
 if __name__ == '__main__':
-    data = {'medico': 'André Matos de Oliveira',
+    data = {'medico': 'Bruno Luis Duda',
             'carteira': '072327862'}
     # r = exec_amil(data:IStenci)
     #data.medico = unidecode(data.medico)
-    #r = get_medico(data.medico)
-    r = get_password('unimed')
+    r = get_medico(data['medico'])
+    #r = get_medico(')
 
-    print(r.user)
+    print(r.cbo)
