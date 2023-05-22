@@ -1,0 +1,90 @@
+{
+    "Amil": {
+        "id": 1,
+        "ANS": "326305"
+    },
+    "Bradesco Sa\u00fade": {
+        "id": 2,
+        "ANS": "005711"
+    },
+    "Cassi": {
+        "id": 3,
+        "ANS": "346659"
+    },
+    "Cindacta": {
+        "id": 4,
+        "ANS": "-"
+    },
+    "Funda\u00e7\u00e3o Copel": {
+        "id": 5,
+        "ANS": "355151"
+    },
+    "Funda\u00e7\u00e3o Sanepar": {
+        "id": 6,
+        "ANS": "338648"
+    },
+    "FUSEX": {
+        "id": 7,
+        "ANS": "-"
+    },
+    "Hospital da Pol\u00edcia Militar - SSP PR": {
+        "id": 8,
+        "ANS": "-"
+    },
+    "ICS": {
+        "id": 9,
+        "ANS": "419010"
+    },
+    "Ita\u00fa Sa\u00fade": {
+        "id": 10,
+        "ANS": "312126"
+    },
+    "Judicemed": {
+        "id": 11,
+        "ANS": "417955"
+    },
+    "Mediservice": {
+        "id": 12,
+        "ANS": "333689"
+    },
+    "MedS\u00eanior": {
+        "id": 13,
+        "ANS": "335614"
+    },
+    "NOSSA SAUDE": {
+        "id": 14,
+        "ANS": "372609"
+    },
+    "Paran\u00e1 Cl\u00ednicas": {
+        "id": 15,
+        "ANS": "350141"
+    },
+    "Particular": {
+        "id": 16,
+        "ANS": "-"
+    },
+    "Pladisa": {
+        "id": 17,
+        "ANS": "419486"
+    },
+    "Promed PR": {
+        "id": 18,
+        "ANS": "418617"
+    },
+    "Sa\u00fade Caixa": {
+        "id": 19,
+        "ANS": "312924"
+    },
+    "Sociedade dos Servidores - Curitiba": {
+        "id": 20,
+        "ANS": "-"
+    },
+    "Sul Am\u00e9rica Servi\u00e7os de Sa\u00fade": {
+        "id": 21,
+        "ANS": "416428"
+    },
+    "Unimed Curitiba": {
+        "id": 22,
+        "ANS": "304701"
+    }
+}

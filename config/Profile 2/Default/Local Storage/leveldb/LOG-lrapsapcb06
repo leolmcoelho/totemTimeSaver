@@ -1,0 +1,4 @@
+2023/05/16-16:07:14.535 1dcc Reusing MANIFEST D:\desenvolvimento\OneDrive - Syara Education\desenvolvimento\TimeSaver\totem\config\Profile 2\Default\Local Storage\leveldb/MANIFEST-000001
+2023/05/16-16:07:14.538 1dcc Recovering log #4
+2023/05/16-16:07:16.621 1dcc (ignoring error) D:\desenvolvimento\OneDrive - Syara Education\desenvolvimento\TimeSaver\totem\config\Profile 2\Default\Local Storage\leveldb/000004.log: dropping 32768 bytes; IO error: D:\desenvolvimento\OneDrive - Syara Education\desenvolvimento\TimeSaver\totem\config\Profile 2\Default\Local Storage\leveldb/000004.log: FILE_ERROR_FAILED (ChromeMethodBFE: 0::SequentialFileRead::1)
+2023/05/16-16:07:16.624 1dcc Reusing old log D:\desenvolvimento\OneDrive - Syara Education\desenvolvimento\TimeSaver\totem\config\Profile 2\Default\Local Storage\leveldb/000004.log 

@@ -1,0 +1,57 @@
+.keyboard__key {
+  width: 10%;
+}
+input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+input[type="number"] {
+  outline: none;
+  border-right: 0px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  height: 20px;
+  padding: 1%;
+  border-right: 0 px solid black;
+}
+
+.container {
+  transition: 5s ease-in-out;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.fade-in {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  opacity: 1;
+}
+
+div.loading {
+  width: 80px;
+  height: 80px;
+  border: 10px solid;
+  border-color: #0084ff #e6e6e6 #e6e6e6;
+  border-radius: 50%;
+  animation: loading 1.5s infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}

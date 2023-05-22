@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    <script defer src="{{ url_for('static', filename='assets/js/result.js') }}"></script>
+
+
+
+    <title>Totem - Time Saver</title>
+
+
+</head>
+
+<body>
+    <header>
+
+        <a href="/index">
+            <img src={{ url_for('static', filename='assets/img/logo.png' ) }} alt="logo da empresa" srcset="">
+        </a>
+    </header>
+    <div class="content">
+        <div class="vector">
+            
+
+            <img style src="{{ url_for('static', filename='assets/img/vector_true.png') }}" alt="">
+        
+            <img style="display:block" src="{{ url_for('static', filename='assets/img/vector.png') }}" alt="">
+        </div>
+        <span class="message">
+
+        </span>
+    </div>
+    <div class="tras"><img src="{{ url_for('static', filename='assets/img/tras.png') }}" alt="" srcset=""></div>
+
+    <div class="frente"><img src="{{ url_for('static', filename='assets/img/frente.png') }}" alt="" srcset=""></div>
+
+</body>
+
+</html>

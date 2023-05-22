@@ -1,0 +1,94 @@
+{
+  "stenci": {
+    "code": "00.X",
+    "message:": "erro no stenci"
+  },
+  "Amil": {
+    "code": 1,
+    "description": " erro no Amil"
+  },
+  "Bradesco Saúde": {
+    "code": 2,
+    "description": " erro no Bradesco Saúde"
+  },
+  "Cassi": {
+    "code": 3,
+    "description": " erro no Cassi"
+  },
+  "Cindacta": {
+    "code": 4,
+    "description": " erro no Cindacta"
+  },
+  "Fundação Copel": {
+    "code": 5,
+    "description": " erro no Fundação Copel"
+  },
+  "Fundação Sanepar": {
+    "code": 6,
+    "description": " erro no Fundação Sanepar"
+  },
+  "FUSEX": {
+    "code": 7,
+    "description": " erro no FUSEX"
+  },
+  "Hospital da Polícia Militar - SSP PR": {
+    "code": 8,
+    "description": " erro no Hospital da Polícia Militar - SSP PR"
+  },
+  "ICS": {
+    "code": 9,
+    "description": " erro no ICS"
+  },
+  "Itaú Saúde": {
+    "code": 10,
+    "description": " erro no Itaú Saúde"
+  },
+  "Judicemed": {
+    "code": 11,
+    "description": " erro no Judicemed"
+  },
+  "Mediservice": {
+    "code": 12,
+    "description": " erro no Mediservice"
+  },
+  "MedSênior": {
+    "code": 13,
+    "description": " erro no MedSênior"
+  },
+  "NOSSA SAUDE": {
+    "code": 14,
+    "description": " erro no NOSSA SAUDE"
+  },
+  "Paraná Clínicas": {
+    "code": 15,
+    "description": " erro no Paraná Clínicas"
+  },
+  "Particular": {
+    "code": 16,
+    "description": " erro no Particular"
+  },
+  "Pladisa": {
+    "code": 17,
+    "description": " erro no Pladisa"
+  },
+  "Promed PR": {
+    "code": 18,
+    "description": " erro no Promed PR"
+  },
+  "Saúde Caixa": {
+    "code": 19,
+    "description": " erro no Saúde Caixa"
+  },
+  "Sociedade dos Servidores - Curitiba": {
+    "code": 20,
+    "description": " erro no Sociedade dos Servidores - Curitiba"
+  },
+  "Sul América Serviços de Saúde": {
+    "code": 21,
+    "description": " erro no Sul América Serviços de Saúde"
+  },
+  "Unimed Curitiba": {
+    "code": 22,
+    "description": " erro no Unimed Curitiba"
+  }
+}

@@ -1,0 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("");
+
+* {
+    //background-color: #a00;
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 42px;
+}
+
+header {
+    padding: 5px 40px;
+}
+h1 {
+    background-image: linear-gradient(180deg, #000 0%, #098e97 100%);
+    background-image: linear-gradient(180deg, #000 0%, #098e97 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    justify-content: left;
+
+    font-weight: 700;
+    font-size: 60px;
+    line-height: 70px;
+}
+.frente,
+.tras {
+    position: fixed;
+    top: 0;
+    right: -1px;
+    z-index: -97;
+    img {
+        width: 25vw;
+        //height: 90vh;
+        //width: auto;
+        //height: auto;
+    }
+}
+
+.tras {
+    top: 65px;
+    z-index: -98;
+}
+
+body {
+    //display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+.content {
+    //display: flex;
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    margin-top: 10px;
+    display: grid;
+    justify-items: center;
+
+    .inputs {
+        display: grid;
+        //align-items: center;
+        //text-align: center;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        margin-top: 30px;
+        outline: 1px solid #03989e;
+        border: 1px solid #fff;
+        border-radius: 10px;
+        width: 60vw;
+        height: 5vh;
+        //margin-top: 10px;
+        //outline: 1px solid ;
+        outline-offset: 13px;
+        //padding-left: -10px;
+    }
+
+    input[type="submit"] {
+        background: #03989e;
+        border: 1px solid #03989e;
+        border-radius: 10px;
+        color: #fff;
+        text-align: center;
+        width: 20vw;
+        height: 10vh;
+        margin-top: 50px;
+    }
+    input[type="submit"]:hover {
+        background: #037074;
+    }
+    input[type="text"]:focus {
+        outline: 3px solid #037074;
+    }
+}
+input[type="submit"]:hover,
+button {
+    background: #037074;
+}
+
+#player {
+    margin: 10px;
+    position: relative;
+    background-color: grey;
+    width: 80vw;
+    height: 82vh;
+    z-index: 100000;
+    border-radius: 10px;
+
+    background: #aaa9a9;
+    border: 5px solid #000000;
+    box-shadow: 0px 21px 14px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+}
+
+span {
+    text-align: center;
+}
+
+.message {
+    font-size: 16px;
+    text-align: left;
+    justify-self: flex-start;
+    margin-left: 10px;
+}
+
+.content {
+    input[type=number] {
+        width: 40vw;
+    }
+}

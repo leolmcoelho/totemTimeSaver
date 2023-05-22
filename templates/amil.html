@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    
+    <script defer src="{{ url_for('static', filename='assets/js/number.js') }}"></script>
+    <script defer src="{{ url_for('static', filename='assets/js/gravar_token.js') }}"></script>
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/keyboard.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/number.css') }}">
+
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>Totem - Time Saver</title>
+
+
+</head>
+
+<body>
+    <header>
+        <a href="/index">
+            <img src={{ url_for('static', filename='assets/img/logo.png' ) }} alt="logo da empresa" srcset="">
+        </a>
+        <h1>Bem vindo</h1>
+    </header>
+    <div class="content">
+        <div class="inputs">
+            <label for="user">Insira aqui o Token</label>
+            <input type="number" id='name' class="use-keyboard-input">
+        </div>
+        <input type="submit" id='btn' value="Iniciar">
+    </div>
+    <div class="tras"><img src="{{ url_for('static', filename='assets/img/tras.png') }}" alt="" srcset=""></div>
+
+    <div class="frente"><img src="{{ url_for('static', filename='assets/img/frente.png') }}" alt="" srcset=""></div>
+
+</body>
+
+</html>

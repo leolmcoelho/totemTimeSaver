@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+2023/05/17-16:46:44.852 4c8 Reusing MANIFEST D:\Desenvolvimento\OneDrive - Syara Education\desenvolvimento\TimeSaver\totem\config\Profile 2\Default\Sync Data\LevelDB/MANIFEST-000001
+2023/05/17-16:46:44.852 4c8 Recovering log #3
+2023/05/17-16:46:44.852 4c8 Reusing old log D:\Desenvolvimento\OneDrive - Syara Education\desenvolvimento\TimeSaver\totem\config\Profile 2\Default\Sync Data\LevelDB/000003.log 
+=======
+2023/05/17-16:45:02.570 3e54 Reusing MANIFEST D:\Desenvolvimento\OneDrive - Syara Education\desenvolvimento\TimeSaver\totem\config\Profile 2\Default\Sync Data\LevelDB/MANIFEST-000001
+2023/05/17-16:45:02.570 3e54 Recovering log #3
+2023/05/17-16:45:02.571 3e54 Reusing old log D:\Desenvolvimento\OneDrive - Syara Education\desenvolvimento\TimeSaver\totem\config\Profile 2\Default\Sync Data\LevelDB/000003.log 
+>>>>>>> 008eacfa0f8bee74eb598b5a3ad3a27f6c02d807

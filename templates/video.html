@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    <script defer src="{{ url_for('static', filename='assets/js/video.js') }}"></script>
+
+    <title>Totem - Time Saver</title>
+
+
+</head>
+
+<body>
+    <header>
+
+        <a href="/index">
+            <img src={{ url_for('static', filename='assets/img/logo.png' ) }} alt="logo da empresa" srcset="">
+        </a>
+
+    </header>
+
+
+    <div class="content">
+
+
+    <div id="player"></div>
+    <div class="message">
+        Aguarde, estamos realizando a liberação junto ao seu convenio...
+    </div>
+
+</div>
+    <script>
+
+        (function () {
+            var player;
+
+            window.onYouTubeIframeAPIReady = function () {
+                player = new YT.Player('player', {
+                    height: window.screen.height,
+                    width: window.screen.width,
+                    autoPlay: 0,
+                    videoId: 'crmLIuySm7c',
+                    events: {
+                        'onReady': onPlayerReady
+                    }
+                });
+                player.setLoop(true);
+            };
+           
+            // 4. Executa o play quando o video estiver pronto
+            function onPlayerReady(event) {
+                event.target.playVideo();
+            }
+
+            var tag = document.createElement('script');
+
+            tag.src = "https://www.youtube.com/iframe_api";
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        })();
+        
+      
+        
+    </script>
+    
+
+
+    <div class="tras"><img src="{{ url_for('static', filename='assets/img/tras.png') }}" alt="" srcset=""></div>
+
+    <div class="frente"><img src="{{ url_for('static', filename='assets/img/frente.png') }}" alt="" srcset=""></div>
+
+</body>
+
+</html>
