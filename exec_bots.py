@@ -229,7 +229,10 @@ def exec_parana_clinicas(data:IStenci):
     
     senha = get_password('parana clinicas')
     parana = ParanaClinicas(senha.user, senha.password)
-    parana.exec(data.carteira, data.medico, 5171288)
+    senha = parana.exec(data.carteira, data.medico)
+    
+    return senha
+    
 
 
 if __name__ == '__main__':

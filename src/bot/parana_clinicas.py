@@ -182,9 +182,7 @@ class ParanaClinicas(Interation):
          
     
     def click_incluir_pedido(self):
-        print('vai clicar')
-       
-        
+        print('vai clicar')        
         xpath_menu = '//*[@id="sm-16811463678817988-1"]'
         #16811458605225508
         # id="sm-16811470290144385-1"

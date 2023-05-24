@@ -14,8 +14,6 @@ from src.bot.my_logger import get_logger
 
 from exec_bots import *
 
-
-
 id = 1
 empresa = 'Unimed'
 host = 'timesaver.com.br'
