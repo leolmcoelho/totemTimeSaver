@@ -44,20 +44,7 @@ def write_token():
     with open("config/token.json", "w") as f:
         json.dump(data, f)
     return {"code": 200, "message": "Token escrito com sucesso!"}
-
-
-
-@app.route("/api/test")
-def test():
-    for i in range(10):
-        print(i)
-        time.sleep(1)
-    print('terminou')
-    
-    #app.redirect('/video')
-         
-    return  {"route": '/'}
-    
+   
     
 @app.route("/api/start-bot", methods=['GET'])
 def start_bot():
@@ -71,8 +58,13 @@ def start_bot():
 @app.route("/api/status-bot")
 def status_bot():
     with open('status.json') as f:
-        file = json.loads(f.read())
-    return file
+        status_data  = json.loads(f.read())
+    
+    with open('config/error.json') as f:
+        error_data  = json.loads(f.read())
+    
+    return {**status_data, **error_data}
+
 
 
 @app.route("/api/reset-status-bot")
@@ -85,17 +77,10 @@ def reset_status_bot():
 
 
 if __name__ == "__main__":
-    #try:
-        leo = True
-        if leo:
-            print(app.config['TEMPLATES_AUTO_RELOAD'])
-        #app.logger.setLevel(logging.ERROR)    
-        app.run(debug=True)
-        
-        #server = Server(app.wsgi_app)
-        #server.serve()
-    #except Exception as e:
-     #   print(e)
+    leo = True
+    if leo:
+        print(app.config['TEMPLATES_AUTO_RELOAD'])
+    #app.logger.setLevel(logging.ERROR)    
+    app.run(debug=True)
     
-    
-    
+

@@ -15,6 +15,7 @@ setInterval(async function() {
     }
     else if (url.code != 100){
         localStorage.setItem('status-bot', url.code)
+        localStorage.setItem('error', url.error)
         window.location.href = '/result';
 
     }

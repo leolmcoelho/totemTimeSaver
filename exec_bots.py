@@ -24,10 +24,19 @@ empresa = 'Unimed'
 host = 'timesaver.com.br'
 
 
-def status(code):
+def status(code, error = False):
     with open('status.json', 'w') as f:
         f.write(json.dumps({'code': code}))
 
+def set_error(error = False):
+    with open('config/error.json', 'w') as f:
+        f.write(json.dumps({'error': error}))
+
+def get_error():
+    with open('config/token.json', 'r') as f:
+        error = f.read()
+        error = json.loads(error)
+    return error
 
 def get_token():
     while True:
@@ -137,8 +146,6 @@ def exec_amil(data:IStenci):
     senha = get_password('Amil (Planos)')
 
     medico = get_medico(data.medico)
-
-    
     
     amil = Amil(senha.user, senha.password)
 
@@ -161,13 +168,13 @@ def exec_amil(data:IStenci):
         senha = amil.get_senha()
         if senha:
             break
-
-    zerar_token()
+    
     amil.inserir_token(token)
 
     if amil.verify_token():
         senha = False
-    logging.info('erro no token')
+        set_error('Amil: erro no token')
+        logging.info('erro no token')
 
     # input('sair')
     return senha
@@ -230,7 +237,8 @@ if __name__ == '__main__':
             'carteira': '072327862'}
     # r = exec_amil(data:IStenci)
     #data.medico = unidecode(data.medico)
-    r = get_medico(data['medico'])
+    #r = get_medico(data['medico'])
+    status(300, 'Amil: Erro no token')
     #r = get_medico(')
 
-    print(r.cbo)
+    #print(r.cbo)

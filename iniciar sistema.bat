@@ -1,1 +1,1 @@
-py main.pyw
+py prod.pyw

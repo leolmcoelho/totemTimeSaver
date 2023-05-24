@@ -1,0 +1,11 @@
+2022/03/28-00:54:08.390 4b00 Reusing MANIFEST F:\OneDrive - Syara Education\bot\Profiles\Profile 2\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2022/03/28-00:54:08.391 4b00 Recovering log #463
+2022/03/28-00:54:08.466 4b00 Reusing old log F:\OneDrive - Syara Education\bot\Profiles\Profile 2\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000463.log 
+2022/03/28-00:54:26.604 525c Level-0 table #469: started
+2022/03/28-00:54:26.776 525c Level-0 table #469: 1071038 bytes OK
+2022/03/28-00:54:26.812 525c Delete type=0 #463
+2022/03/28-00:54:26.879 59cc Compacting 1@1 + 2@2 files
+2022/03/28-00:54:27.078 59cc Generated table #470@1: 42644 keys, 2259588 bytes
+2022/03/28-00:54:27.228 59cc Generated table #471@1: 41691 keys, 2009054 bytes
+2022/03/28-00:54:27.228 59cc Compacted 1@1 + 2@2 files => 4268642 bytes
+2022/03/28-00:54:27.261 59cc compacted to: files[ 0 0 2 0 0 0 0 ]

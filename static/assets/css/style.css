@@ -50,7 +50,6 @@ body {
 }
 
 .content {
-  transition:  right 10s ease-in-out;
   position: absolute;
   top: 53%;
   left: 50%;
@@ -59,18 +58,6 @@ body {
   margin-top: 10px;
   display: grid;
   justify-items: center;
-
-  
-}
-
-.container{
-  opacity: 0; 
-  transition: opacity 1s ease-out;
-}
-
-.container.active {
-  opacity: 1; 
-  transition: opacity 3s ease-out;
 }
 .content .inputs {
   display: grid;
@@ -134,4 +121,16 @@ span {
 
 .content input[type=number] {
   width: 40vw;
+}
+
+.alert {
+  margin: 10px;
+  padding: 20px 50px !important;
+  font-size: 20px;
+  line-height: 0px;
+}
+
+body > div.content > button {
+  max-width: 50vw;
+  font-size: 15px;
 }/*# sourceMappingURL=style.css.map */

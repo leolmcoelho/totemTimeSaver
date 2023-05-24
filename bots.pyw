@@ -14,7 +14,7 @@ from src.bot.my_logger import get_logger
 
 from exec_bots import *
 
-logging = get_logger()
+
 
 id = 1
 empresa = 'Unimed'
@@ -22,9 +22,11 @@ host = 'timesaver.com.br'
 
 paciente = False
 
-
 def exec(paciente):
+    logging = get_logger()
+    
     status(100)
+    set_error()
     try:
         for _ in range(2):
 
@@ -57,22 +59,17 @@ def exec(paciente):
                             stenci.finalizar_amil(result)
                         else:
                             status(300)
-                            
-                            
-                    
-
                     
                 status(200)
                 return True
 
             except Exception as e:
-               
+                status(300)
+                set_error('Stenci: Erro ao finalizar no Stenci')
                 logging.exception(e)
                 return False
-        
 
     except Exception as e:
-        
         logging.exception(e)
         status(300)
         return False
