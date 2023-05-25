@@ -24,19 +24,10 @@ empresa = 'Unimed'
 host = 'timesaver.com.br'
 
 
-def status(code, error = False):
+def status(code):
     with open('status.json', 'w') as f:
         f.write(json.dumps({'code': code}))
 
-def set_error(error = False):
-    with open('config/error.json', 'w') as f:
-        f.write(json.dumps({'error': error}))
-
-def get_error():
-    with open('config/token.json', 'r') as f:
-        error = f.read()
-        error = json.loads(error)
-    return error
 
 def get_token():
     while True:
@@ -137,8 +128,6 @@ def escolher_convenio(data:IStenci):
         pass
     else:
         status(300)
-    
-    logging.info(f'Procedimento no convenio {convenio} finalizado')
 
     return result
 
@@ -148,7 +137,7 @@ def exec_amil(data:IStenci):
     senha = get_password('Amil (Planos)')
 
     medico = get_medico(data.medico)
-    
+
     amil = Amil(senha.user, senha.password)
 
     amil.click_autorization_previa()
@@ -159,7 +148,6 @@ def exec_amil(data:IStenci):
     amil.insert_data()
     # input('esperar')
     amil.inserir_solicitante(medico.name, medico.cbo)
-    
     amil.inserir_servico()
     amil.click_incluir()
 
@@ -170,13 +158,13 @@ def exec_amil(data:IStenci):
         senha = amil.get_senha()
         if senha:
             break
-    
+
+    zerar_token()
     amil.inserir_token(token)
 
     if amil.verify_token():
         senha = False
-        set_error('Amil: erro no token')
-        logging.info('erro no token')
+    logging.info('erro no token')
 
     # input('sair')
     return senha
@@ -190,7 +178,7 @@ def exec_medSenior(data:IStenci):
     med.inserir_cel('2199999999')
     result = med.final()
     logging.info(result)
-    input('aperte enter para continuar')
+    # input('aperte enter para continuar')
     #status(200)
     #status(400)
     return result
@@ -231,19 +219,15 @@ def exec_parana_clinicas(data:IStenci):
     
     senha = get_password('parana clinicas')
     parana = ParanaClinicas(senha.user, senha.password)
-    senha = parana.exec(data.carteira, data.medico)
-    
-    return senha
-    
+    parana.exec(data.carteira, data.medico, 5171288)
 
 
 if __name__ == '__main__':
-    data = {'medico': 'Bruno Luis Duda',
+    data = {'medico': 'André Matos de Oliveira',
             'carteira': '072327862'}
     # r = exec_amil(data:IStenci)
     #data.medico = unidecode(data.medico)
-    #r = get_medico(data['medico'])
-    status(300, 'Amil: Erro no token')
-    #r = get_medico(')
+    #r = get_medico(data.medico)
+    r = get_password('unimed')
 
-    #print(r.cbo)
+    print(r.user)

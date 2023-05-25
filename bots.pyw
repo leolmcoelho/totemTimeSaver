@@ -34,16 +34,15 @@ def exec(paciente):
 
             for _ in range(5):
                 data = stenci.get_infos()
-                print(data)
+                #print(data)
                 if data.carteira:
                     break
 
             result = escolher_convenio(data)
             convenio = data.convenio
             logging.info(result)
-            stenci.finalizar_amil(result)
-            try:
-                stenci.finalizar_amil(result)
+            try:                
+
                 if result == False:
                     status(300)
                 else:
@@ -57,8 +56,10 @@ def exec(paciente):
                             stenci.finalizar_amil(result)
                         else:
                             status(300)
+                            return False
                     
                 status(200)
+                logging.info('Finalizado no Stenci')
                 return True
 
             except Exception as e:
@@ -77,7 +78,7 @@ def exec(paciente):
 
     
 if len(sys.argv) > 1:
-    print(sys.argv[1])
+    print(sys.argv[1])#
     exec(sys.argv[1])
     
     
