@@ -190,7 +190,7 @@ def exec_medSenior(data:IStenci):
     med.inserir_cel('2199999999')
     result = med.final()
     logging.info(result)
-    input('aperte enter para continuar')
+    #input('aperte enter para continuar')
     #status(200)
     #status(400)
     return result
