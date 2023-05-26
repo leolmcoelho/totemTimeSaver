@@ -147,6 +147,10 @@ class Stenci(Interation):
         self.click_js('//*[@id="div-register-service"]/div/a/button')
         self.click_js('//*[@id="div-register-service"]/div/ul/li/a')
 
+    def button_registrar_atendimento(self):
+        self.click_js("//button[text()=' Registrar atendimento ']")
+        
+
     def finalizar_amil(self, senha):
         self.click_procedimentos()
         self.click_lupa()
@@ -207,12 +211,16 @@ class Stenci(Interation):
 
         self.click_lupa()
     
-        self.click_registrar_atendimento()
-        time.sleep(3)
+        #
+        
+        self.selecionar_consulta()
 
-        self.element('//*[@id="referral-service-type"]', time=30)
-
-        self.clicks_select_final()
+        #self.element('//*[@id="referral-service-type"]', time=30)
+        self.button_registrar_atendimento()
+        #time.sleep(3)
+        el = '//*[@id="modal-particular-account"]/div/div[2]/div[3]/button[1]'
+        self.click_js(el,  time=40)
+        time.sleep(2)
 
         el = '//*[@id="modal-appointment"]/div/div[2]/div[3]/button[3]'
         # //*[@id="modal-appointment"]/div/div[2]/div[3]/button[3]
@@ -300,7 +308,7 @@ if __name__ == '__main__':
     # s.click_agenda()
     # s.extrair_medicos()
 
-    s.set_client('Joao Luiz Garcez Neto')
+    s.set_client('Rosilaine de Cassia Lourenço')
     # input('ta parado')
 
     # s.client_click()
@@ -308,7 +316,7 @@ if __name__ == '__main__':
     # a = s.get_infos()
     # print(a)
 
-    s.finalizar_amil(111)
+    s.finalizar()
 
     f = time.time()
 

@@ -6,12 +6,12 @@ import json
 import time
 from urllib.parse import quote
 from unidecode import unidecode
-from src.bot.unimed import Unimed
-from src.bot.stenci import Stenci
-from src.bot.amil import Amil
-from src.bot.medsenior import MedSenior
-from src.bot.sulAmerica import sulAmerica
-from src.bot.parana_clinicas import ParanaClinicas
+from src.bot import Unimed
+from src.bot import Stenci
+from src.bot import Amil
+from src.bot import MedSenior
+from src.bot import sulAmerica
+from src.bot import ParanaClinicas
 from src.models.user import *
 
 from src.bot.my_logger import get_logger
@@ -243,7 +243,7 @@ if __name__ == '__main__':
     # r = exec_amil(data:IStenci)
     #data.medico = unidecode(data.medico)
     #r = get_medico(data['medico'])
-    status(300, 'Amil: Erro no token')
+    #status(300, 'Amil: Erro no token')
     #r = get_medico(')
 
     #print(r.cbo)
