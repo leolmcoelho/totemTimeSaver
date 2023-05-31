@@ -1,9 +1,10 @@
-import logging as log
+
+
 import os
 import sys
 import time
 import json
-
+import logging as log
 from selenium import webdriver
 
 from selenium.webdriver.chrome.service import Service
@@ -14,13 +15,13 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 
+from src.bot.my_logger import get_logger
+from src.models.user import *
+from src.interation import Interation
+from src.interation.login import Login
 
 sys.path.append(os.getcwd())
 
-from src.interation.login import Login
-from src.interation import Interation
-from src.models.user import *
-from src.bot.my_logger import get_logger
 
 os.environ['WDM_LOG'] = str(log.NOTSET)
 
@@ -36,7 +37,7 @@ class Stenci(Interation):
 
         service = Service(executable_path=ChromeDriverManager().install())
         options = Options()
-        #options.page_load_strategy = 'normal'
+        # options.page_load_strategy = 'normal'
         options.add_argument('--log-level=4')
         options.add_argument(
             f'user-data-dir={os.getcwd()}/config/Profile 2')
@@ -44,16 +45,15 @@ class Stenci(Interation):
         try:
             self.driver = webdriver.Chrome(service=service, options=options)
         except:
-             self.driver = webdriver.Chrome(service=service)
-        
+            self.driver = webdriver.Chrome(service=service)
+
         if not teste:
             self.driver.minimize_window()
-        
+
         super().__init__(self.driver)
 
         self.driver.get("https://stenci.app")
-        
-        
+
         try:
             self.locacated('//*[@id="app"]/section/aside/nav/a[2]/div', 3)
 
@@ -61,20 +61,18 @@ class Stenci(Interation):
             if self.logado() == False:
                 self.login(user, password)
         self.click_agenda()
-        
-        
+
     def logado(self):
         try:
             if self.locacated('//*[@id="username"]', time=1):
-                js ='document.querySelector("body > div.login-page > div.login-form > form > div.form-body > label > input[type=checkbox]").checked = true'
+                js = 'document.querySelector("body > div.login-page > div.login-form > form > div.form-body > label > input[type=checkbox]").checked = true'
                 self.driver.execute_script(js)
                 return False
-            else: 
+            else:
                 return True
         except:
             return False
-        
-    
+
     def login(self, user, password):
         try:
             login = Login(self.driver)
@@ -149,7 +147,63 @@ class Stenci(Interation):
 
     def button_registrar_atendimento(self):
         self.click_js("//button[text()=' Registrar atendimento ']")
-        
+
+
+    def click_salvar_espera(self):
+        self.click_js("//button[text()='Salvar e colocar em espera']")
+
+    def click_procedimentos(self):
+        self.click('//*[@id="modal-appointment"]/div/div[2]/div[2]/div/ul/li[2]/a')
+        time.sleep(1)
+
+    def set_senha(self, senha):
+        self.write('//*[@id="authorization-password"]', senha)
+
+    def click_finalizar(self):
+        self.click_js('//*[@id="modal-sadt-account"]/div/div[2]/div[3]/button[1]')
+
+    def click_preencher(self):
+        self.click('//*[@id="modal-sadt-account"]/div/div[2]/div[2]/div/div[5]/div[6]/button')
+
+    def registra_procedimentos(self):
+        self.click_js('//*[@id="div-register-service"]/div/a/button')
+
+    def selecionar_consulta(self):
+        xpath = "//td[text()='Consulta em Consultório']"
+        self.click(xpath)
+
+    def click_lupa(self):
+        self.click('//*[@id="expenses"]/div/form/div/div/div/form/div/button')
+
+    def click_sp(self):
+        self.click_js("//a[text()='Guia de SP/SADT']")
+
+    def click_sair(self):
+        path = '//button[text()="Sair"]'
+
+    def finalizar(self):
+
+        self.click_procedimentos()
+
+        self.click_lupa()
+
+        #
+
+        self.selecionar_consulta()
+
+        # self.element('//*[@id="referral-service-type"]', time=30)
+        self.button_registrar_atendimento()
+        # time.sleep(3)
+        finalizar_xpath = '//*[@id="modal-particular-account"]/div/div[2]/div[3]/button[1]'
+        self.click_js(finalizar_xpath,  time=40)
+        time.sleep(2)
+
+        #el = '//*[@id="modal-appointment"]/div/div[2]/div[3]/button[3]'
+        #self.click_js(el, time=40)
+        self.click_salvar_espera()
+
+        #logging.info(self.element(el).get_attribute('outerHTML'))
+        time.sleep(2)
 
     def finalizar_amil(self, senha):
         self.click_procedimentos()
@@ -166,68 +220,7 @@ class Stenci(Interation):
         time.sleep(1.5)
         time.sleep(2)
         self.click_salvar_espera()
-        
-    
-    def click_salvar_espera(self):
-        self.click_js("//button[text()='Salvar e colocar em espera']")
-    
-    def click_procedimentos(self):
-        self.click('//*[@id="modal-appointment"]/div/div[2]/div[2]/div/ul/li[2]/a')
-        time.sleep(1)
-    
-    def set_senha(self, senha):
-        self.write('//*[@id="authorization-password"]', senha)
-    
-    def click_finalizar(self):
-        self.click_js('//*[@id="modal-sadt-account"]/div/div[2]/div[3]/button[1]')
-        
 
-    def click_preencher(self):
-        self.click('//*[@id="modal-sadt-account"]/div/div[2]/div[2]/div/div[5]/div[6]/button')
-    
-    def registra_procedimentos(self):
-        self.click_js('//*[@id="div-register-service"]/div/a/button')
-    
-    def selecionar_consulta(self):
-        xpath = "//td[text()='Consulta em Consultório']"
-        self.click(xpath)
-    
-    
-    def click_lupa(self):
-        self.click('//*[@id="expenses"]/div/form/div/div/div/form/div/button')
-
-    def click_sp(self):
-        self.click_js("//a[text()='Guia de SP/SADT']")
-        
-    def click_sair(self):
-        path = '//button[text()="Sair"]'
-        
-        
-    
-    
-    def finalizar(self):
-
-        self.click_procedimentos()
-
-        self.click_lupa()
-    
-        #
-        
-        self.selecionar_consulta()
-
-        #self.element('//*[@id="referral-service-type"]', time=30)
-        self.button_registrar_atendimento()
-        #time.sleep(3)
-        el = '//*[@id="modal-particular-account"]/div/div[2]/div[3]/button[1]'
-        self.click_js(el,  time=40)
-        time.sleep(2)
-
-        el = '//*[@id="modal-appointment"]/div/div[2]/div[3]/button[3]'
-        # //*[@id="modal-appointment"]/div/div[2]/div[3]/button[3]
-        self.click_js(el, time=40)
-
-        logging.info(self.element(el).get_attribute('outerHTML'))
-        time.sleep(2)
 
     def clicks_select_final(self):
         clicks = ['//*[@id="referral-service-type"]/option[2]',
@@ -302,8 +295,7 @@ if __name__ == '__main__':
 
     # input('ta parado')
     # login = s.login()
-    #time.sleep(2
-               
+    # time.sleep(2
 
     # s.click_agenda()
     # s.extrair_medicos()

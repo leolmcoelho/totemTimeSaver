@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC 
 from selenium.webdriver.support.ui import WebDriverWait
-
+from selenium.webdriver.support.ui import Select
 
 
 class Interation:
@@ -39,15 +39,16 @@ class Interation:
                 EC.presence_of_element_located((method, tag)))
         element = self.driver.find_element(method, tag)
                             
-        if key == 'enter':
-            element.send_keys(Keys.ENTER)
-
-        elif key == 'esc':
-            element.send_keys(Keys.ESCAPE)
-            
-        elif key == 'home':
-            element.send_keys(Keys.HOME)
-            
+        actions = {
+            'enter': Keys.ENTER,
+            'esc': Keys.ESCAPE,
+            'down': Keys.DOWN,
+            'home': Keys.HOME,
+            'tab': Keys.TAB
+        }
+        
+        if key in actions:
+            element.send_keys(actions[key])
         else:
             element.send_keys(key)
             
@@ -119,6 +120,21 @@ class Interation:
         
         return ddd, celular
     
+    
+    def select_option(self, tag: str, value: str = None, text: str = None, time: int = 15, method: str = 'xpath'):
+        
+        select_element = self.element(tag, time, method)
+        select = Select(select_element)
+
+        if value:
+            select.select_by_value(value)
+            return True
+
+        if text:
+            select.select_by_visible_text(text)
+            return True
+
+        return False
     
     if __name__ == '__main__':
         def main(test:str):

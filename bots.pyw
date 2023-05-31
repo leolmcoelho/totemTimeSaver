@@ -51,6 +51,12 @@ def exec(paciente):
                     if convenio == 'Unimed Curitiba':
                         stenci.finalizar()
                     
+                    elif convenio == 'Fundação Copel':
+                        ##### TEM QUE TER UM DIFERENTEEEEEEEEE
+                        ###stenci.finalizar()
+                        #clicka na guia de consulta, ao inves de guia spd
+                        pass
+                    
                     else:
                         if result:
                             stenci.finalizar_amil(result)

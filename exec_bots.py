@@ -130,6 +130,10 @@ def escolher_convenio(data:IStenci):
 
     if convenio == "Paraná Clínicas":
         result = exec_parana_clinicas(data)
+        
+    if convenio == "Paraná Clínicas":
+        result = exec_fundacao_copel(data)
+        ##mudar isso no STENCIIIIII
 
     logging.info(result)
 
@@ -190,9 +194,7 @@ def exec_medSenior(data:IStenci):
     med.inserir_cel('2199999999')
     result = med.final()
     logging.info(result)
-    #input('aperte enter para continuar')
-    #status(200)
-    #status(400)
+    
     return result
 
 

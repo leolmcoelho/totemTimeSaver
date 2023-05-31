@@ -25,8 +25,8 @@ class Login:
         return True
     
 
-    def click_button(self, path):
-        self.interation.click(path)
+    def click_button(self, path, method = 'xpath'):
+        self.interation.click(path, method)
         return True
         
     def unimed_user(self, selector, value):
