@@ -14,13 +14,13 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
-
+sys.path.append(os.getcwd())
 from src.bot.my_logger import get_logger
 from src.models.user import *
 from src.interation import Interation
 from src.interation.login import Login
 
-sys.path.append(os.getcwd())
+
 
 
 os.environ['WDM_LOG'] = str(log.NOTSET)
@@ -148,7 +148,6 @@ class Stenci(Interation):
     def button_registrar_atendimento(self):
         self.click_js("//button[text()=' Registrar atendimento ']")
 
-
     def click_salvar_espera(self):
         self.click_js("//button[text()='Salvar e colocar em espera']")
 
@@ -160,7 +159,7 @@ class Stenci(Interation):
         self.write('//*[@id="authorization-password"]', senha)
 
     def click_finalizar(self):
-        self.click_js('//*[@id="modal-sadt-account"]/div/div[2]/div[3]/button[1]')
+        self.click_js("//button[text()=' Finalizar ']")
 
     def click_preencher(self):
         self.click('//*[@id="modal-sadt-account"]/div/div[2]/div[2]/div/div[5]/div[6]/button')
@@ -177,7 +176,7 @@ class Stenci(Interation):
 
     def click_sp(self):
         self.click_js("//a[text()='Guia de SP/SADT']")
-        
+
     def click_guia_consulta(self):
         self.click_js("//a[text()='Guia de Consulta']")
 
@@ -201,11 +200,11 @@ class Stenci(Interation):
         self.click_js(finalizar_xpath,  time=40)
         time.sleep(2)
 
-        #el = '//*[@id="modal-appointment"]/div/div[2]/div[3]/button[3]'
-        #self.click_js(el, time=40)
+        # el = '//*[@id="modal-appointment"]/div/div[2]/div[3]/button[3]'
+        # self.click_js(el, time=40)
         self.click_salvar_espera()
 
-        #logging.info(self.element(el).get_attribute('outerHTML'))
+        # logging.info(self.element(el).get_attribute('outerHTML'))
         time.sleep(2)
 
     def finalizar_amil(self, senha):
@@ -223,7 +222,7 @@ class Stenci(Interation):
         time.sleep(1.5)
         time.sleep(2)
         self.click_salvar_espera()
-        
+
     def finalizar_geral(self, senha):
         self.click_procedimentos()
         self.click_lupa()
@@ -233,13 +232,12 @@ class Stenci(Interation):
         self.click_guia_consulta()
         time.sleep(2)
         self.set_senha(senha)
-        self.click_preencher()
+        # self.click_preencher()
         time.sleep(2)
         self.click_finalizar()
         time.sleep(1.5)
         time.sleep(2)
         self.click_salvar_espera()
-
 
     def clicks_select_final(self):
         clicks = ['//*[@id="referral-service-type"]/option[2]',
@@ -319,7 +317,8 @@ if __name__ == '__main__':
     # s.click_agenda()
     # s.extrair_medicos()py ma
 
-    s.set_client('Rosilaine de Cassia Lourenço')
+    s.set_client('Izolina')
+    s.finalizar_geral('1111111')
     # input('ta parado')
 
     # s.client_click()
@@ -327,7 +326,7 @@ if __name__ == '__main__':
     # a = s.get_infos()
     # print(a)
 
-    s.finalizar()
+    # s.finalizar()
 
     f = time.time()
 
