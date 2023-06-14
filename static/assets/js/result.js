@@ -43,5 +43,5 @@ btn.addEventListener('click', () => {
 
 setTimeout(() => {
 
-    //    window.location.href = '/';
+    window.location.href = '/';
 }, 1000 * 20);

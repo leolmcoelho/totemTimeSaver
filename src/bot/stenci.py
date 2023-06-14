@@ -177,6 +177,9 @@ class Stenci(Interation):
 
     def click_sp(self):
         self.click_js("//a[text()='Guia de SP/SADT']")
+        
+    def click_guia_consulta(self):
+        self.click_js("//a[text()='Guia de Consulta']")
 
     def click_sair(self):
         path = '//button[text()="Sair"]'
@@ -212,6 +215,22 @@ class Stenci(Interation):
         self.registra_procedimentos()
         time.sleep(2)
         self.click_sp()
+        time.sleep(2)
+        self.set_senha(senha)
+        self.click_preencher()
+        time.sleep(2)
+        self.click_finalizar()
+        time.sleep(1.5)
+        time.sleep(2)
+        self.click_salvar_espera()
+        
+    def finalizar_geral(self, senha):
+        self.click_procedimentos()
+        self.click_lupa()
+        self.selecionar_consulta()
+        self.registra_procedimentos()
+        time.sleep(2)
+        self.click_guia_consulta()
         time.sleep(2)
         self.set_senha(senha)
         self.click_preencher()
@@ -298,7 +317,7 @@ if __name__ == '__main__':
     # time.sleep(2
 
     # s.click_agenda()
-    # s.extrair_medicos()
+    # s.extrair_medicos()py ma
 
     s.set_client('Rosilaine de Cassia Lourenço')
     # input('ta parado')

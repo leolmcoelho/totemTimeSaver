@@ -205,6 +205,7 @@ class MedSenior(Interation):
         self.logger.info(status)
         
         if status != 'Autorizado':
+            self.logger.warning(f'Status no MEDSENIOR: {status}')
             return False
         senha = self.get_attribute('//*[@id="tbTodosProcedimentos"]/tbody/tr[2]/td[5]', 'innerHTML')
         senha = re.sub(r'\D', '', senha)

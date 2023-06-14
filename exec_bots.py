@@ -193,7 +193,8 @@ def exec_medSenior(data:IStenci):
     med.inserir_beneficiario(data.carteira)
     med.inserir_cel('2199999999')
     result = med.final()
-    logging.info(result)
+    #input("tirar isso aqui")
+    logging.info(f'Resultado no MEDSENIOR {result}')
     
     return result
 
