@@ -9,15 +9,7 @@ class User(BaseModel):
     code: str = None 
     
     
-class Medico(BaseModel):
-    user_id:int = None
-    name:str = None
-    cpf:str = None
-    conselho:str = None
-    uf:str = None
-    cbo:str = None
-    registro:str = None
-    
+
 class IStenci(BaseModel):    
     carteira:str = None
     medico:str = None
