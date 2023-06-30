@@ -41,12 +41,12 @@ class Driver(Interation):
 
         if not teste:
             self.driver.minimize_window()
-            pass
+            
         
-        self.driver.get('https://timesaver.com.br/controller/read/senhas?empresa=stenci&id=1')
+        #self.driver.get('https://timesaver.com.br/controller/read/senhas?empresa=stenci&id=1')
 
     def make_chrome(self):
-        service = ChromeService(executable_path=ChromeDriverManager().install())
+        service = ChromeService(executable_path='config/driver/chromedriver.exe')
         options = ChromeOptions()
         options.add_argument('--log-level=4')
 
