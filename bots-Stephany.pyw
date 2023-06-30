@@ -1,29 +1,36 @@
 import sys
+import os
+import requests
+import json
 
+import time
+from urllib.parse import quote
+from unidecode import unidecode
+from src.bot.unimed import Unimed
+from src.bot.stenci import Stenci
+from src.bot.amil import Amil
+from src.bot.medsenior import MedSenior
 from src.bot.my_logger import get_logger
-from exec_bots import escolher_convenio
-from app import get_password, status, set_error
-from src.bot import Stenci
+
+from exec_bots import *
+
+id = 1
+empresa = 'Unimed'
+host = 'timesaver.com.br'
+
+paciente = False
+
 
 def exec(paciente):
-    
-    SADT = ["Amil (Planos)"]
-
-    CONSULTA = [
-                "MedSênior",
-                "Paraná Clínicas",
-                "Paraná Clínicas"
-                ]
     logging = get_logger()
 
     status(100)
     set_error()
-    senha = get_password('Stenci')
-    stenci = Stenci(senha.user, senha.password, teste=True)
-            
     try:
         for _ in range(2):
 
+            senha = get_password('Stenci')
+            stenci = Stenci(senha.user, senha.password, teste=True)
             stenci.set_client(paciente)
 
             for _ in range(5):
@@ -31,6 +38,7 @@ def exec(paciente):
                 # print(data)
                 if data.carteira:
                     break
+                #colocar erro pro user final
 
             result = escolher_convenio(data)
             convenio = data.convenio
@@ -50,7 +58,15 @@ def exec(paciente):
                     Itaú – consulta
                     Sul América – consulta
                     Saude caixa – consulta"""
-                
+                SADT = [
+                    "Amil (Planos)"
+                ]
+
+                CONSULTA = [
+                    "MedSênior",
+                    "Paraná Clínicas",
+                    "Paraná Clínicas"
+                ]
                 if result == False:
                     status(300)
                     set_error(f'{convenio}: Erro ao finalizar no {convenio}')
@@ -98,6 +114,11 @@ def exec(paciente):
     finally:
         stenci.driver.close()
 
+
 if len(sys.argv) > 1:
     #print(sys.argv[1])
     exec(sys.argv[1])
+
+
+# print(get_password('Unimed'))
+    # print(sys.argv)

@@ -1,18 +1,28 @@
+
+
 import os
 import sys
 import time
 import json
 import logging as log
+from selenium import webdriver
 
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.select import Select
 
 sys.path.append(os.getcwd())
-
-from src.interation.login import Login
-from src.interation import Interation
-from src.models.user import *
 from src.bot.my_logger import get_logger
-from src.interation.make_driver import Driver
+from src.models.user import *
+from src.interation import Interation
+from src.interation.login import Login
+
+from interation.make_driver import MakeDriver
+
+
+
+
 os.environ['WDM_LOG'] = str(log.NOTSET)
 
 
@@ -23,13 +33,11 @@ class Stenci(Interation):
 
     def __init__(self, user, password, teste=False):
 
+        # options = webdriver.ChromeOptions()
+        self.driver = MakeDriver().driver
         
-        self.driver = Driver().driver
-
-        self.driver.get("https://stenci.app")
-
-        self.login(user, password)
-        self.click_agenda()
+        self.driver.get('https://timesaver.com.br/controller/read/senhas?empresa=stenci&id=1')
+        
 
     def logado(self):
         try:
@@ -77,8 +85,9 @@ class Stenci(Interation):
         return True
 
     def select_agenda(self):
-        self.select_option('//*[@id="professional"]', text = '[Todos]')
-
+        select_element = self.element('//*[@id="professional"]')
+        select = Select(select_element)
+        select.select_by_visible_text('[Todos]')
 
     def get_infos(self):
         values = {}
@@ -275,7 +284,7 @@ if __name__ == '__main__':
 
     i = time.time()
 
-    s = Stenci("74655523549", 'crm1234', False)
+    s = Stenci("74655523549", 'crm1234', True)
     # time.sleep(20)
 
     # input('ta parado')

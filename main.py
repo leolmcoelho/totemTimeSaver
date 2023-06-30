@@ -1,4 +1,4 @@
-import json, os
+import json, os, subprocess
 from flask import Flask, render_template, redirect, request
 
 
@@ -36,7 +36,7 @@ def teste():
 def amil():
     return render_template('amil.html')
 
-#localhost.com/api/write-token?token=111222
+
 @app.route("/api/write-token", methods=["GET"])
 def write_token():
     token = request.args.get("token") # Obtém o valor do token do parâmetro "token" na URL
@@ -50,7 +50,7 @@ def write_token():
 def start_bot():
     #print()
     name = request.args.get('name')
-    os.system(f'py bots.pyw "{name}" &')
+    subprocess.Popen(f'py bots.pyw "{name}" &')
     #exec(name)
     return {'data': request.args.get('name')}
    

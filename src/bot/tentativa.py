@@ -1,4 +1,4 @@
-
+import json
 import logging as log
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.service import Service
@@ -52,28 +52,45 @@ class Video(Interation):
         # "pega o conteudo de dentro do html, o texto, por exemplo"
         titulo = self.get_attribute('//*[@id="title"]/h1/yt-formatted-string', 'innerHTML')
         # return titulo
-        print(titulo)
+        #print(titulo)
+        return titulo
 
     def get_all_videos(self):
 
         self.driver.get('https://www.youtube.com/@RadioBandNewsFM/videos')
-        els = self.elements(
-            "//a[contains(@class, 'yt-simple-endpoint') and starts-with(@href, '/watch?v=')]")
+        elementos = self.elements('//*[@id="dismissible"]/ytd-thumbnail/a')
+        #input('esperar')
+        links_href = []
+        video_data = []
+        for elemento in elementos[:3]:
+            video_link = elemento.get_attribute('href')
+            print(video_link)
+            links_href.append(video_link)
 
-        for el in els:
-            print(el.get_attribute('href'))
-            print('\n')
+        #return links_href
+        
+        for link in links_href:
+            self.driver.get(link)
+            #time.sleep(6)
+            titulo = self.titulo()  # Executa o método titulo() para cada link
+            print(titulo)
+            
+        video_data.append({"link": video_link, "titulo": titulo})
+        self.driver.quit()
 
+        with open('videos.json', 'w') as file:
+            json.dump(video_data, file, indent=4)
 
 if __name__ == '__main__':
 
+
     video = Video()
     video.get_all_videos()
-    # video.start_video()
-    # video.option()
-    # video.velocity()
+    #video.start_video()
+    #video.option()
+    #video.velocity()
     # video.titulo()
-    # video.legend()
-    # video.option()
+    #video.legend()
+    #video.option()
 
     input("Aperte enter para fechar o terminal")

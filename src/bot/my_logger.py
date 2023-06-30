@@ -1,10 +1,9 @@
-import sys, os
+import sys
+import os
 import getpass
 import logging
-sys.path.append(os.getcwd())
 
-
-def get_logger(name = getpass.getuser()):
+def get_logger(name=getpass.getuser()):
     # Define o formato de saída do log
     log_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     formatter = logging.Formatter(log_format, datefmt='%Y/%m/%d %I:%M:%S')
@@ -19,10 +18,12 @@ def get_logger(name = getpass.getuser()):
     console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(formatter)
 
-    # Cria o logger e adiciona os handlers
+    # Cria o logger e adiciona os handlers apenas se não estiverem presentes
     logger = logging.getLogger(name)
     logger.setLevel(logging.INFO)
-    logger.addHandler(file_handler)
-    logger.addHandler(console_handler)
+
+    if not logger.handlers:
+        logger.addHandler(file_handler)
+        logger.addHandler(console_handler)
 
     return logger

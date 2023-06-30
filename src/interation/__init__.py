@@ -136,13 +136,13 @@ class Interation:
 
         return False
     
-    if __name__ == '__main__':
-        def main(test:str):
-            if type(test) == str:
-                print('é bool')
-            print(type(test))
-            
-            print('é boll' + test)
-            
-        main(True)
+if __name__ == '__main__':
+    def main(test:str):
+        if type(test) == str:
+            print('é bool')
+        print(type(test))
+        
+        print('é boll' + test)
+        
+    main(True)
     

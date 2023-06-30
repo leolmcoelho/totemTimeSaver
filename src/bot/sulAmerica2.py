@@ -25,7 +25,7 @@ from src.interation.login import Login
 from src.interation import Interation
 
 
-class sulAmerica:
+class sulAmericaSF:
     
     def __init__(self, teste = True):
         
@@ -53,7 +53,7 @@ class sulAmerica:
         print('entrou no iframe')
         """
         login = Login(self.driver)
-        input('leste')
+        #input('leste')
         self.interation.click('//*[@id="ServiceCommunityTemplate"]/div[1]/div/div[2]/div/div/c-e-m-e-d-login-container/div/div/div[1]/div[1]/c-e-m-e-d-login/div/span/div/div', method='xpath')
         print('clicou')
         login.set_user('//*[@id="username-1"]', user)
@@ -84,13 +84,7 @@ class sulAmerica:
         for i in range(1,6):
             xpath = f'//*[@id="codigo-beneficiario-{i}"]'
             self.interation.write(xpath, 11)
-            
-            
-        
-        
-        
-        
-        
+      
         return True
     
     

@@ -26,7 +26,7 @@ os.environ['WDM'] = str(log.NOTSET)
 class Cassi(Interation):
     logger = get_logger()
 
-    def __init__(self, user, password, teste=True):
+    def __init__(self, teste=True):
 
         # options = webdriver.ChromeOptions()
         self.host ='https://www.polimed.com.br/autenticadorOrizon/blogin'
@@ -39,6 +39,8 @@ class Cassi(Interation):
         #options.add_argument(r'user-data-dir={}\config\Profile 2'.format(os.getcwd()))
 
         self.driver = webdriver.Chrome(service=service, options=options)
+
+        
         
         if not teste:
             self.driver.minimize_window()
@@ -47,7 +49,7 @@ class Cassi(Interation):
         self.url = self.host
         self.driver.get(self.url)
         
-        self.login(user, password)
+        #self.login(user, password)
 
    
     def login(self, user, password):
@@ -72,19 +74,70 @@ class Cassi(Interation):
             logging.error(mensagem_erro)
             return False
 
+    def consulta(self):
+        self.click('//*[@id="consulta"]')
 
-    def select_access(self):
-        self.click_js('/html/body/div[16]/div/div/div[2]/div[7]/div[1]/div[2]/div[2]/div')    
+    def select_operadora(self, operadora):
+        self.select_option('//*[@id="transacaoEmsNumero"]', operadora, time=30)
+    
+    '''def carteira(self, carteira):
+        self.write('//*//*[@id="numeroCarteiraBeneficiario"]', carteira)'''
+
+    def entrar_iframe_select(self):
+        html = '/html/body/app-root/div[2]/div[2]/app-iframe/iframe'
+        el = self.element(html, method='xpath')
+        self.driver.switch_to.frame(el)
+        return True
+    
+
+    def entrar_iframe_content(self):
+        html = 'frameOOL'
+        el = self.element(html, method='id')
+        self.driver.switch_to.frame(el)
+        return True
     
     
+
     
+    def selects(self,  tipo_conselho, uf, cbo, consulta = '1', RN = 'N'):
+        infos = [
+            {'value': RN ,'id': 'atendimentoRN'},
+            {'value': tipo_conselho, 'id': 'siglaConselhoProfissionalExecutante'},
+            {'value': uf, 'id': 'ufConselhoProfissionalExecutante'},
+            {'value': cbo, 'id': 'selectCbosProfissionalExecutante'},
+            {'value': consulta, 'id': 'tipoConsulta'},
+        ]
+        for info in infos:
+            
+            self.select_option(info['id'], value=info['value'], method='id')
+        
+    def inputs(self,  carteira, num_conselho):
+        infos = [
+                {'value': carteira ,'id': 'numeroCarteiraBeneficiario'},
+                {'value': num_conselho, 'id': 'numeroConselhoProfissionalExecutante'},
+                ]
+        for info in infos:
+                
+            self.write(info['id'], info['value'], method='id')
+                    
+
+    def logout(self):
+
+        self.driver.switch_to.default_content()
+        self.click('sair', 'id')
+
+
+        
+        #self.driver.quit()
+    '''def select_access(self):
+        self.click_js('/html/body/div[16]/div/div/div[2]/div[7]/div[1]/div[2]/div[2]/div') 
+
     def guia_page(self):
         self.element('//*[@id="menuPrincipal"]/div/div[2]/a')
         self.driver.get(self.host + '/GuiaConsulta/ViewGuiaConsulta')
         print('click')
         
-    def carteira(self, carteira):
-        self.write('//*[@id="beneficiario"]', carteira)
+    
         
     def verify_carteira(self):
         self.click('//*[@id="executante"]')
@@ -122,20 +175,41 @@ class Cassi(Interation):
     def senha(self):
         senha = self.get_attribute('//*[@id="dialogText"]/div[4]/span', 'innerHTML')
         #senha = senha.split('</b>')
-        return senha
+        return senha'''
     
 if __name__ == '__main__':
     # user, senha = ()
     #print(os.getcwd())
-    os.system('cls')
-    
-    carteira = '37910701'
-    medico = 'Marcos de Abreu'
-  
-    try:
-        s = Cassi('PROCTO1200', 'Procto1200!')
+    cassi = Cassi()
+    try: 
+        os.system('cls')
+        
+        CARTEIRA = '37910701'
+        MEDICO = 'Marcos de Abreu'
+        TIPO_CONSELHO = 'CRM'
+        UF = 'PR'
+        CBO = '225280'
+        NUM_CONSELHO = '17741'
+
+        
+        cassi.login('PROCTO1200', 'Procto1200!')
+        cassi.consulta()
+        cassi.entrar_iframe_select()
+        
+        os.system('cls')
+        #input('\n\nCONTINUAR')
+        cassi.select_operadora('346')
+        cassi.entrar_iframe_content()
+        cassi.selects(TIPO_CONSELHO, UF, CBO)
+        cassi.inputs(CARTEIRA, NUM_CONSELHO)
+
+    finally:
+        cassi.logout()
+
+    '''try:
+        
         #s.guia_page()
-        #s.carteira(carteira)
+        
         #s.verify_carteira()
         #s.medico(medico)
         #s.date()
@@ -152,4 +226,4 @@ if __name__ == '__main__':
 
     
     finally:
-        input('terminou')
+        input('terminou')'''

@@ -50,7 +50,7 @@ class Sanepar(Interation):
         super().__init__(self.driver)
         self.url = self.host + "/Logon"
         self.driver.get(self.url)
-        self.set_cookies()
+        #self.set_cookies()
         self.login(user, password)
         # self.click_services()
         # self.click_guia_consulta()
@@ -173,5 +173,5 @@ if __name__ == '__main__':
             s.logger.exception(mensagem_erro)
 
     
-    finally:
-        input('terminou')
+    #finally:
+        #input('terminou')
