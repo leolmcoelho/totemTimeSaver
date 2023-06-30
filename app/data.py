@@ -56,28 +56,28 @@ def zerar_token():
 
 def get_password(empresa):
     empresa = empresa.lower()
-
-    url = f'https://{HOST}/controller/read/senhas?empresa={empresa}&id={ID}'
-    print(url)
-    r = requests.get(url).json()['result'][0]
-    print('vai vir o print do json')
-    print(r)
-    # if r['code']:
-    # {'user': r['user'], 'password': r['password'], 'code': r['code']}
-    user = User(**r)
-    return user
+    with open('tmp/senha.json', 'r') as file:
+            senhas = json.load(file)
+    for item in senhas:
+            if item['empresa_name'] == empresa:
+                return User(**item)
+    
+    return False
 
 
 def atualizar_password():
     url = f'https://{HOST}/controller/read/senhas?id={ID}'
-    print(url)
     response = requests.get(url).json()['result']
-
+    key = 'empresa_name'
     file_path = 'tmp/senha.json'
     os.makedirs(os.path.dirname(file_path), exist_ok=True)
-
+    for item in response:
+        item[key] = item[key].lower()
+         
     with open(file_path, 'w') as file:
         json.dump(response, file)
+        
+    return True
 
 
 def get_medico(medico):
@@ -86,11 +86,10 @@ def get_medico(medico):
     with open('tmp/medicos.json', 'r') as file:
         medicos = json.load(file)
     for item in medicos:
-        #print(medico)
+        
         if item['name'] == medico:
             return Medico(**item)
-    #print(medicos)
-
+    return True
 
 
 def atualizar_medico():
@@ -120,6 +119,7 @@ def atualizar_medico():
 
 if __name__ == '__main__':
 
-    medico = get_medico('Marcos de abreu bonardi')
+    #medico = get_medico('Marcos de abreu bonardi')
+    medico = get_password('medsÊnior')
     #medico = atualizar_medico()
     print(medico)
