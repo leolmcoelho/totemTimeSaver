@@ -23,6 +23,7 @@ sys.path.append(os.getcwd())
 from src.interation.login import Login
 
 from src.interation import Interation
+from src.interation.make_driver import Driver
 
 
 class sulAmericaSF:
@@ -31,11 +32,8 @@ class sulAmericaSF:
         
         #options = webdriver.ChromeOptions()
         
-        service = Service(executable_path=ChromeDriverManager().install())
-        options = Options() 
-        #options.page_load_strategy = 'normal'
+        self.driver = Driver().driver
         
-        self.driver = webdriver.Chrome(service=service, options=options)
         if not teste :
             self.driver.minimize_window()
            

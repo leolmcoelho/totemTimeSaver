@@ -23,6 +23,8 @@ from src.interation.login import Login
 from src.interation import Interation
 from src.bot.my_logger import get_logger
 
+self.driver = Driver().driver
+
 os.environ['WDM_LOG'] = str(log.NOTSET)
 
 
@@ -35,14 +37,7 @@ class Sanepar(Interation):
         # options = webdriver.ChromeOptions()
         self.host ='https://novowebplansanepar.facilinformatica.com.br/GuiasTISS'
 
-        service = Service(executable_path=ChromeDriverManager().install())
-        options = Options()
-        # options.page_load_strategy = 'none'
-        options.add_argument('--log-level=4')
-        
-        #options.add_argument(r'user-data-dir={}\config\Profile 2'.format(os.getcwd()))
-
-        self.driver = webdriver.Chrome(service=service, options=options)
+        self.driver = Driver().driver
         
         if not teste:
             self.driver.minimize_window()

@@ -30,7 +30,7 @@ from src.interation.login import Login
 
 from src.interation import Interation
 from src.bot.my_logger import get_logger
-
+from src.interation.make_driver import Driver
 import logging as log
 
 os.environ['WDM_LOG'] = str(log.NOTSET)
@@ -44,33 +44,7 @@ class Unimed:
     def __init__(self,user, password, navegador = 'chrome', teste = None) -> None:
         
        
-        if navegador == 'chrome':
-            options = C_Options()
-            
-            #path = f"user-data-dir={os.getcwd()}\webdependencies\Profile 5"
-            ##print(path)
-            #options.add_argument(path)
-            service = CService(executable_path=ChromeDriverManager().install())
-            #service = ChromeDriverManager().install()
-            self.driver = webdriver.Chrome(service=service, options=options)
-        
-        elif navegador == 'mozila':
-            #self.driver = webdriver.Firefox(service=service, options=options)
-            #service=FirefoxService(GeckoDriverManager().install())
-            #service=(GeckoDriverManager().install())
-            ##print(os.getcwd() + '/geckodriver.exe')
-            #service = FirefoxService(executable_path = os.getcwd() + '\geckodriver.exe')
-            path = os.getcwd() + '/geckodriver.exe'
-            #path = GeckoDriverManager().install()
-            self.driver = webdriver.Firefox(executable_path=path)        
-        
-        elif navegador == 'edge':
-            #options = EI_Options()
-            #options.page_load_strategy = 'none'
-            service = 'IEDriverServer.exe'
-            #service = (IEDriverManager().install())
-            self.driver = webdriver.Ie(executable_path=service)            
-        
+        self.driver = Driver().driver
         
         self.interation = Interation(self.driver)
         self.host = 'chrome-extension://moffahdcgnjnglbepimcggkjacdmpojc/ieability.html?url=https://autorizador.unimedcuritiba.com.br/'

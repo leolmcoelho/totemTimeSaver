@@ -14,6 +14,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
+from src.interation.make_driver import Driver
 
 import logging as log
 
@@ -34,12 +35,8 @@ class sulAmerica:
         
         #options = webdriver.ChromeOptions()
         
-        service = Service(executable_path=ChromeDriverManager().install())
-        options = Options() 
-        options.page_load_strategy = 'none'
-        #options.add_argument('--log-level=4')
+        self.driver = Driver().driver
         
-        self.driver = webdriver.Chrome(service=service, options=options)
         if not teste :
             self.driver.minimize_window()
            

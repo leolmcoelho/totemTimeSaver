@@ -16,7 +16,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from src.interation import Interation
 from src.interation.login import Login
 from src.bot.my_logger import get_logger
-
+from src.interation.make_driver import Driver
 os.environ['WDM_LOG'] = str(log.NOTSET)
 
 
@@ -29,14 +29,8 @@ class Pladisa(Interation):
         # options = webdriver.ChromeOptions()
         self.host ='https://pladisaonline.com.br/'
 
-        service = Service(executable_path=ChromeDriverManager().install())
-        options = Options()
-        # options.page_load_strategy = 'none'
-        options.add_argument('--log-level=4')
-        
-        #options.add_argument(r'user-data-dir={}\config\Profile 2'.format(os.getcwd()))
-
-        self.driver = webdriver.Chrome(service=service, options=options)
+     
+        self.driver = Driver().driver
         
         if not teste:
             self.driver.minimize_window()

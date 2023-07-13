@@ -23,7 +23,7 @@ from src.interation.login import Login
 from src.interation import Interation
 
 from src.bot.my_logger import get_logger
-
+from src.interation.make_driver import Driver
 
 
 
@@ -36,15 +36,7 @@ class MedSenior(Interation):
         
         #options = webdriver.ChromeOptions()
         
-        service = Service(executable_path=ChromeDriverManager().install())
-        options = Options() 
-        options.page_load_strategy = 'normal'
-        
-        options.add_argument('--log-level=4')
-        
-        self.driver = webdriver.Chrome(service=service, options=options)
-        if not teste :
-            self.driver.minimize_window()
+        self.driver = Driver().driver
            
         
         super().__init__(self.driver)
