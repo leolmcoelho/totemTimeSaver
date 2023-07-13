@@ -151,37 +151,29 @@ class Stenci(Interation):
     def click_sair(self):
         path = '//button[text()="Sair"]'
 
-    def check_atendimento(self):
-        js = 'document.querySelector("div > label > input[type=checkbox]").checked = true'
-        self.driver.execute_script(js)
-    
-    def verificar_conteudo(self):
-        for _ in range(3):
-            if self.locacated('//table/thead/tr/th[4]'):
-                return True
-    
     def finalizar(self):
 
         self.click_procedimentos()
 
         self.click_lupa()
 
+        #
+
         self.selecionar_consulta()
+
         # self.element('//*[@id="referral-service-type"]', time=30)
         self.button_registrar_atendimento()
         # time.sleep(3)
-        self.check_atendimento()
-        self.verificar_conteudo()
         finalizar_xpath = '//*[@id="modal-particular-account"]/div/div[2]/div[3]/button[1]'
         self.click_js(finalizar_xpath,  time=40)
-        
-        print('clickou')
-        time.sleep(4)
-        print('SALVAR E CCOLCOAR EM ESPERA')
-        self.click_salvar_espera()
         time.sleep(2)
-        
-        return True
+
+        # el = '//*[@id="modal-appointment"]/div/div[2]/div[3]/button[3]'
+        # self.click_js(el, time=40)
+        self.click_salvar_espera()
+
+        # logging.info(self.element(el).get_attribute('outerHTML'))
+        time.sleep(2)
 
     def finalizar_amil(self, senha):
         self.click_procedimentos()
@@ -283,7 +275,7 @@ if __name__ == '__main__':
 
     i = time.time()
 
-    s = Stenci("74655523549", 'crm1234', True)
+    s = Stenci("74655523549", 'crm1234', False)
     # time.sleep(20)
 
     # input('ta parado')
@@ -293,9 +285,8 @@ if __name__ == '__main__':
     # s.click_agenda()
     # s.extrair_medicos()py ma
 
-    s.set_client('Marcelo souza')
-    input('aplicar config')
-    s.finalizar()
+    s.set_client('Izolina')
+    s.finalizar_geral('1111111')
     # input('ta parado')
 
     # s.client_click()
