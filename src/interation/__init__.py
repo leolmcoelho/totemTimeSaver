@@ -74,11 +74,14 @@ class Interation:
         return elements
     
     def locacated(self, tag:str, time:int=15, method:str='xpath'):
-        if self.element(tag, time, method):
-            return True
+        try:
+            if self.element(tag, time, method):
+                return True
     
-        else:
+        except:
             return False
+            
+            
     
     
     def get_attribute(self, tag:str, attribute:str='value', time:int=15, method:str='xpath'):
