@@ -8,8 +8,15 @@ def get_logger(name=getpass.getuser()):
     log_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     formatter = logging.Formatter(log_format, datefmt='%Y/%m/%d %I:%M:%S')
 
+    # Obtém o caminho absoluto para o diretório de logs
+    logs_dir = os.path.abspath('logs')
+
+    # Verifica se o diretório de logs existe e cria-o, se necessário
+    if not os.path.exists(logs_dir):
+        os.makedirs(logs_dir)
+
     # Cria um handler para salvar as mensagens do log em um arquivo
-    file_handler = logging.FileHandler(f'logs/{name}_log.log', encoding='utf-8')
+    file_handler = logging.FileHandler(f'{logs_dir}/{name}_log.log', encoding='utf-8')
     file_handler.setLevel(logging.INFO)
     file_handler.setFormatter(formatter)
 
