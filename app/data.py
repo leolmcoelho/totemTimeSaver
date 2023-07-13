@@ -54,7 +54,7 @@ def zerar_token():
         f.write(json.dumps({'token': None}))
 
 
-def get_password(empresa):
+def get_password(empresa) -> User:
     empresa = empresa.lower()
     with open('tmp/senha.json', 'r') as file:
             senhas = json.load(file)

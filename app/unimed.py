@@ -5,8 +5,9 @@ from src.bot import Unimed as UNIMED
 from app.data import *
 
 
-def Unimed(carteira, medico):
-    medico = unidecode(medico)
+def Unimed(data: IStenci):
+    carteira = data.carteira
+    medico = unidecode(data.medico)
     for _ in range(3):
         try:
 
